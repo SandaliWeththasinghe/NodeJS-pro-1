@@ -1,35 +1,46 @@
 const express = require('express');
 
+// Created ROutes
+const postRequests = require("./routes/Post/postWithParams");
+const getRequests = require("./routes/Get/getWithParams");
+const putRequests = require("./routes/Put/putWithParams");
+const deleteRequests = require("./routes/Delete/deleteWithRoutes");
+
 const app = express();
 
-// Get Requests
-app.get("/se", (req,res) => {
-  return res.json("Get Request");
-});
+app.use(postRequests);
+app.use(getRequests);
+app.use(putRequests);
+app.use(deleteRequests);
 
-// Get with parameter
-app.get("/se/:seNo", (req,res) => {
-  req.params.seNo;
-  return res.json(req.params.seNo);
-});
+// // Get Requests
+// app.get("/se", (req,res) => {
+//   return res.json("Get Request");
+// });
 
-// Post Requests
-app.post("/se/:postPara", (req,res) => {
-  const seNum = req.params.postPara;
-  return res.json(seNum);
-});
+// // Get with parameter
+// app.get("/se/:seNo", (req,res) => {
+//   req.params.seNo;
+//   return res.json(req.params.seNo);
+// });
 
-// Put Requests
-app.put("/se/:putPara", (req,res) => {
-  const seNum = req.params.putPara;
-  return res.json(seNum);
-});
+// // Post Requests
+// app.post("/se/:postPara", (req,res) => {
+//   const seNum = req.params.postPara;
+//   return res.json(seNum);
+// });
 
-// Delete Requests
-app.delete("/se/:deletePara", (req,res) => {
-  const seNum = req.params.deletePara;
-  return res.json(seNum);
-});
+// // Put Requests
+// app.put("/se/:putPara", (req,res) => {
+//   const seNum = req.params.putPara;
+//   return res.json(seNum);
+// });
+
+// // Delete Requests
+// app.delete("/se/:deletePara", (req,res) => {
+//   const seNum = req.params.deletePara;
+//   return res.json(seNum);
+// });
 
 const PORT = process.env.PORT || 5000;
 
