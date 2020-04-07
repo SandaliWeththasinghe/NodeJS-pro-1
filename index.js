@@ -4,14 +4,20 @@ const express = require('express');
 const postRequests = require("./routes/Post/postWithParams");
 const getRequests = require("./routes/Get/getWithParams");
 const putRequests = require("./routes/Put/putWithParams");
-const deleteRequests = require("./routes/Delete/deleteWithRoutes");
+const deleteRequests = require("./routes/Delete/deleteWithParams");
+const postWithBody = require("./routes/Post/postWithBody");
 
 const app = express();
+
+// Middelware to get data from client
+app.use(express.json());
 
 app.use(postRequests);
 app.use(getRequests);
 app.use(putRequests);
 app.use(deleteRequests);
+
+app.use(postWithBody);
 
 // // Get Requests
 // app.get("/se", (req,res) => {
